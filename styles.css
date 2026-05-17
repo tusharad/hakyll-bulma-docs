@@ -79,7 +79,7 @@ a {
   border-radius: 0.6rem;
   padding: 0.75rem 1rem;
   font-weight: 700;
-  margin: 0 0 0.75rem 0;
+  margin: 2.5rem 0 0.75rem 0;
 }
 
 .panel-block.is-active {
@@ -345,8 +345,6 @@ a {
     width: calc(100% - 2rem);
     margin: 0.5rem 1rem;
     box-shadow: none;
-    /* place toggles below the fixed navbar so they're fully visible */
-    margin-top: calc(var(--navbar-height) + 0.5rem);
     position: relative;
     z-index: 45;
   }
