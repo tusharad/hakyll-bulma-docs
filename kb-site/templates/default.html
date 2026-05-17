@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>KB Site - $title$</title>
+    <meta name="color-scheme" content="light dark">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="/css/default.css">
+</head>
+<body>
+    <nav class="navbar is-fixed-top docs-navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <a class="navbar-item brand-mark" href="/">
+                <span class="brand-badge">KB</span>
+                <span class="brand-title">Knowledge Base</span>
+            </a>
+            <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="docs-nav-menu">
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+                <span aria-hidden="true"></span>
+            </a>
+        </div>
+
+        <div id="docs-nav-menu" class="navbar-menu">
+            <div class="navbar-start">
+                <a class="navbar-item" href="/">Home</a>
+                <a class="navbar-item" href="/about.html">About</a>
+                <a class="navbar-item" href="/contact.html">Contact</a>
+                <a class="navbar-item" href="/archive.html">Archive</a>
+            </div>
+
+            <div class="navbar-end docs-navbar-actions">
+                <div class="navbar-item search-wrap">
+                    <div class="field has-addons search-field">
+                        <div class="control is-expanded">
+                            <input id="search-input"
+                                         class="input"
+                                         type="search" placeholder="Search docs" aria-label="Search documentation">
+                        </div>
+                        <div class="control">
+                            <button id="search-clear" class="button is-light" type="button">Clear</button>
+                        </div>
+                    </div>
+                    <div id="search-results" class="dropdown-menu" role="listbox" aria-label="Search results"></div>
+                </div>
+
+                <div class="navbar-item">
+                    <button id="theme-toggle" class="button is-link is-light" type="button" aria-pressed="false">
+                        <span class="icon" aria-hidden="true">◐</span>
+                        <span>Theme</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <main id="top" class="docs-shell">
+        <div class="container is-fluid docs-layout">
+            <button class="button is-hidden-desktop docs-panel-toggle" type="button" data-panel-toggle="sidebar">Browse sections</button>
+            <button class="button is-hidden-desktop docs-panel-toggle" type="button" data-panel-toggle="toc">On this page</button>
+
+            <div class="columns is-variable is-6 docs-columns">
+                <aside id="sidebar" class="column is-3-desktop is-12-mobile docs-sidebar panel">
+                    <p class="panel-heading">Knowledge Base</p>
+                    <a class="panel-block" href="/">Getting started</a>
+                    <a class="panel-block" href="/about.html">About this site</a>
+                    <a class="panel-block" href="/contact.html">Contact</a>
+                    <a class="panel-block" href="/archive.html">Archive</a>
+
+                    <div class="panel-block">
+                        <div class="content is-small">
+                            <p class="has-text-weight-semibold">Page controls</p>
+                            <p>Use the TOC to jump within a page and the search box to find posts and pages.</p>
+                        </div>
+                    </div>
+                </aside>
+
+                <section class="column is-6-desktop is-12-mobile docs-main">
+                    <article class="box docs-article">
+                        <div class="content markdown-body" id="doc-content">
+                            <header class="docs-page-header">
+                                <h1 class="title is-1">$title$</h1>
+                            </header>
+
+                            $body$
+                        </div>
+
+                        <hr>
+
+                        <div class="level docs-pager">
+                            <div class="level-left">
+                                <a class="button is-light" href="/archive.html" aria-label="Previous page">Archive</a>
+                            </div>
+                            <div class="level-right">
+                                <a class="button is-link" href="/" aria-label="Next page">Home</a>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+
+                <aside id="toc" class="column is-3-desktop is-12-mobile docs-toc panel">
+                    <p class="panel-heading">On this page</p>
+                    <nav id="toc-links" class="toc-links"></nav>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+    <script src="/search-index.js"></script>
+    <script src="/js/app.js"></script>
+</body>
+</html>
