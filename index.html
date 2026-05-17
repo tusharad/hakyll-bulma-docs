@@ -7,8 +7,8 @@
   <meta name="color-scheme" content="light dark">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.20/index.css">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -57,14 +57,7 @@
   </nav>
 
   <main id="top" class="docs-shell">
-    <section class="hero is-small docs-hero">
-      <div class="hero-body">
-        <div class="container is-fluid">
-          <p class="title is-3">Technical documentation template</p>
-          <p class="subtitle is-6">Modern, markdown-first, Bulma-powered, and ready for AWS architecture notes.</p>
-        </div>
-      </div>
-    </section>
+    <!-- Main content columns (sidebar, article, toc) -->
 
     <div class="container is-fluid docs-layout">
       <button class="button is-hidden-desktop docs-panel-toggle" type="button" data-panel-toggle="sidebar">Browse sections</button>
@@ -89,7 +82,12 @@
         <section class="column is-6-desktop is-12-mobile docs-main">
           <article class="box docs-article">
             <div class="content markdown-body" id="doc-content">
-              <h1 id="architecture">AWS reference architecture</h1>
+              <header class="docs-page-header">
+                <h1 class="title is-1">Technical documentation template</h1>
+                <p class="subtitle is-5">Modern, markdown-first, Bulma-powered, and ready for AWS architecture notes.</p>
+              </header>
+
+              <h2 id="architecture">AWS reference architecture</h2>
               <p>This page is intentionally structured like a documentation template. Replace the content block with rendered markdown HTML from your static site generator.</p>
 
               <div class="message is-warning docs-callout">

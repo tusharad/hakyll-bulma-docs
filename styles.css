@@ -10,6 +10,7 @@
   --docs-code-bg: #0f172a;
   --docs-code-text: #e2e8f0;
   --docs-shadow: 0 20px 50px rgba(20, 33, 61, 0.08);
+  --navbar-height: 3.75rem;
 }
 
 html[data-theme="dark"] {
@@ -36,7 +37,7 @@ body {
     radial-gradient(circle at top left, rgba(47, 111, 237, 0.08), transparent 32%),
     linear-gradient(180deg, var(--docs-bg), var(--docs-bg));
   color: var(--docs-text);
-  font-family: "Inter", "Segoe UI", sans-serif;
+  font-family: "Nunito", "Inter", "Segoe UI", system-ui, -apple-system, "Helvetica Neue", Arial, sans-serif;
   padding-top: 3.75rem;
 }
 
@@ -70,6 +71,20 @@ a {
 .brand-title {
   font-weight: 700;
   color: var(--docs-text);
+}
+
+.panel-heading {
+  background: var(--docs-surface-strong);
+  color: var(--docs-text);
+  border-radius: 0.6rem;
+  padding: 0.75rem 1rem;
+  font-weight: 700;
+  margin: 0 0 0.75rem 0;
+}
+
+.panel-block.is-active {
+  background: var(--docs-accent-soft);
+  border-radius: 0.45rem;
 }
 
 .docs-navbar-actions {
@@ -154,21 +169,54 @@ a {
 }
 
 .docs-columns {
-  align-items: flex-start;
+  align-items: stretch;
+  gap: 0; /* remove space between columns so sidebars touch center */
 }
 
 .docs-sidebar,
-.docs-toc,
+.docs-toc {
+  /* sidebars should not look like cards; be transparent and full-height */
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+  min-height: calc(100vh - var(--navbar-height) - 2rem);
+}
+
+.docs-sidebar .panel,
+.docs-toc .panel {
+  /* use same surface as article for visual consistency */
+  background: var(--docs-surface);
+  border: 1px solid var(--docs-border);
+  box-shadow: var(--docs-shadow);
+  margin: 0 0 0 0;
+  padding: 0.5rem;
+  border-radius: 0.75rem;
+}
+
+.docs-sidebar .panel-block,
+.docs-toc .panel-block {
+  padding: 0.85rem 1rem;
+  border-radius: 0;
+}
+
+.docs-sidebar .panel-block.is-active,
+.docs-toc .panel-block.is-active {
+  background: var(--docs-accent-soft);
+}
+
 .docs-article {
   background: var(--docs-surface);
   border: 1px solid var(--docs-border);
   box-shadow: var(--docs-shadow);
+  border-radius: 1rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
 }
 
 .docs-sidebar,
 .docs-toc {
   position: sticky;
-  top: 5rem;
+  top: calc(var(--navbar-height) + 0.5rem);
 }
 
 .docs-main {
@@ -176,8 +224,13 @@ a {
 }
 
 .docs-article {
-  border-radius: 1.25rem;
-  padding: clamp(1rem, 2vw, 2rem);
+  border-radius: 1rem;
+  padding: clamp(1rem, 2vw, 1.5rem);
+}
+
+.docs-article .content {
+  max-width: 72ch;
+  margin: 0 auto;
 }
 
 .markdown-body {
@@ -189,7 +242,7 @@ a {
 .markdown-body h3,
 .markdown-body h4 {
   color: var(--docs-text);
-  scroll-margin-top: 6rem;
+  scroll-margin-top: calc(var(--navbar-height) + 0.75rem);
 }
 
 .markdown-body p,
@@ -247,6 +300,7 @@ a {
 
 .docs-toc .toc-links {
   display: grid;
+  gap: 0.25rem;
 }
 
 .toc-link {
@@ -279,11 +333,22 @@ a {
   .docs-toc {
     position: static;
     margin-bottom: 0.75rem;
+    min-height: auto;
   }
 
   .docs-sidebar[data-panel-hidden="true"],
   .docs-toc[data-panel-hidden="true"] {
     display: none;
+  }
+
+  .docs-panel-toggle {
+    width: calc(100% - 2rem);
+    margin: 0.5rem 1rem;
+    box-shadow: none;
+    /* place toggles below the fixed navbar so they're fully visible */
+    margin-top: calc(var(--navbar-height) + 0.5rem);
+    position: relative;
+    z-index: 45;
   }
 }
 
