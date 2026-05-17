@@ -49,6 +49,7 @@ a {
   backdrop-filter: blur(14px);
   background: var(--docs-surface);
   border-bottom: 1px solid var(--docs-border);
+  z-index: 1000 !important;
 }
 
 .brand-mark {
