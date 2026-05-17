@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>AWS Architecture Docs Template</title>
+  <meta name="color-scheme" content="light dark">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/inter@5.0.20/index.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <nav class="navbar is-fixed-top docs-navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a class="navbar-item brand-mark" href="#top">
+        <span class="brand-badge">AWS</span>
+        <span class="brand-title">Architecture Docs</span>
+      </a>
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="docs-nav-menu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+
+    <div id="docs-nav-menu" class="navbar-menu">
+      <div class="navbar-start">
+        <a class="navbar-item is-active" href="#top">Overview</a>
+        <a class="navbar-item" href="#architecture">Architecture</a>
+        <a class="navbar-item" href="#notes">Notes</a>
+        <a class="navbar-item" href="#references">References</a>
+      </div>
+
+      <div class="navbar-end docs-navbar-actions">
+        <div class="navbar-item search-wrap">
+          <div class="field has-addons search-field">
+            <div class="control is-expanded">
+              <input id="search-input" class="input" type="search" placeholder="Search docs" aria-label="Search documentation">
+            </div>
+            <div class="control">
+              <button id="search-clear" class="button is-light" type="button">Clear</button>
+            </div>
+          </div>
+          <div id="search-results" class="dropdown-menu" role="listbox" aria-label="Search results"></div>
+        </div>
+
+        <div class="navbar-item">
+          <button id="theme-toggle" class="button is-link is-light" type="button" aria-pressed="false">
+            <span class="icon" aria-hidden="true">◐</span>
+            <span>Theme</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main id="top" class="docs-shell">
+    <section class="hero is-small docs-hero">
+      <div class="hero-body">
+        <div class="container is-fluid">
+          <p class="title is-3">Technical documentation template</p>
+          <p class="subtitle is-6">Modern, markdown-first, Bulma-powered, and ready for AWS architecture notes.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="container is-fluid docs-layout">
+      <button class="button is-hidden-desktop docs-panel-toggle" type="button" data-panel-toggle="sidebar">Browse sections</button>
+      <button class="button is-hidden-desktop docs-panel-toggle" type="button" data-panel-toggle="toc">On this page</button>
+
+      <div class="columns is-variable is-6 docs-columns">
+        <aside id="sidebar" class="column is-3-desktop is-12-mobile docs-sidebar panel">
+          <p class="panel-heading">Documentation</p>
+          <a class="panel-block is-active" href="#top">Getting started</a>
+          <a class="panel-block" href="#architecture">Reference architecture</a>
+          <a class="panel-block" href="#notes">Operational notes</a>
+          <a class="panel-block" href="#references">Diagrams and sources</a>
+
+          <div class="panel-block">
+            <div class="content is-small">
+              <p class="has-text-weight-semibold">Page controls</p>
+              <p>Use the previous and next buttons at the bottom to move between pages in your generated site.</p>
+            </div>
+          </div>
+        </aside>
+
+        <section class="column is-6-desktop is-12-mobile docs-main">
+          <article class="box docs-article">
+            <div class="content markdown-body" id="doc-content">
+              <h1 id="architecture">AWS reference architecture</h1>
+              <p>This page is intentionally structured like a documentation template. Replace the content block with rendered markdown HTML from your static site generator.</p>
+
+              <div class="message is-warning docs-callout">
+                <div class="message-header">
+                  <p>Caution</p>
+                </div>
+                <div class="message-body">
+                  <p>Use this box for warnings, operational caveats, and migration risks.</p>
+                </div>
+              </div>
+
+              <h2 id="notes">Key notes</h2>
+              <ul>
+                <li>Markdown lists should render cleanly and remain readable on mobile.</li>
+                <li>Images should scale to the width of the content column.</li>
+                <li>Code snippets should keep syntax highlighting support from your generator.</li>
+              </ul>
+
+              <figure class="image docs-image">
+                <img src="https://via.placeholder.com/1200x640?text=Architecture+Diagram" alt="Architecture diagram placeholder">
+                <figcaption>Example image block with responsive sizing.</figcaption>
+              </figure>
+
+              <h2 id="references">Code sample</h2>
+              <pre><code class="language-hcl">resource "aws_s3_bucket" "docs" {
+  bucket = "architecture-docs-example"
+}
+              </code></pre>
+
+              <h2 id="next-steps">Next steps</h2>
+              <p>Generate the final site by replacing the sample content, sidebar entries, and search index with data from your markdown build pipeline.</p>
+            </div>
+
+            <hr>
+
+            <div class="level docs-pager">
+              <div class="level-left">
+                <a class="button is-light" href="#" aria-label="Previous page">Previous</a>
+              </div>
+              <div class="level-right">
+                <a class="button is-link" href="#" aria-label="Next page">Next</a>
+              </div>
+            </div>
+          </article>
+        </section>
+
+        <aside id="toc" class="column is-3-desktop is-12-mobile docs-toc panel">
+          <p class="panel-heading">On this page</p>
+          <nav id="toc-links" class="toc-links"></nav>
+        </aside>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/fuse.js@7.0.0"></script>
+  <script src="app.js"></script>
+</body>
+</html>
