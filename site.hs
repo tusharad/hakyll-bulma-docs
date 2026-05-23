@@ -45,7 +45,7 @@ main = hakyll $ do
             >>= loadAndApplyTemplate "templates/default.html" defaultContext
             >>= relativizeUrls
 
-    match "posts/*" $ do
+    match "posts/**" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
@@ -70,7 +70,7 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
+            posts <- loadAll "posts/**" -- [Item String]
             let indexCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     defaultContext
@@ -130,5 +130,4 @@ dropExtension filePath = case break (== '.') (reverse filePath) of
 
 postCtx :: Context String
 postCtx =
-    dateField "date" "%B %e, %Y" `mappend`
     defaultContext
