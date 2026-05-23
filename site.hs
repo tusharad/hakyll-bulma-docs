@@ -10,8 +10,16 @@ sectionContext =
     listField "overview" defaultContext (loadAll "posts/01-overview/*") `mappend`
     listField "aws-services" defaultContext (loadAll "posts/02-aws-services/*")
 
+emptySectionContext :: Context String
+emptySectionContext =
+    listField "overview" defaultContext (pure []) `mappend`
+    listField "aws-services" defaultContext (pure [])
+
 pageContext :: Context String
-pageContext = sectionContext `mappend` defaultContext
+pageContext = emptySectionContext `mappend` defaultContext
+
+indexContext :: Context String
+indexContext = sectionContext `mappend` defaultContext
 
 stripHtml :: String -> String
 stripHtml = unwords . words . go False
@@ -86,7 +94,7 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            let indexCtx = pageContext
+            let indexCtx = indexContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
