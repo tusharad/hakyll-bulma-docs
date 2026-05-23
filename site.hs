@@ -7,19 +7,11 @@ import Hakyll
 
 sectionContext :: Context String
 sectionContext =
-    listField "overview" defaultContext (loadAll "posts/01-overview/*") `mappend`
-    listField "aws-services" defaultContext (loadAll "posts/02-aws-services/*")
-
-emptySectionContext :: Context String
-emptySectionContext =
-    listField "overview" defaultContext (pure []) `mappend`
-    listField "aws-services" defaultContext (pure [])
+    listField "overview" defaultContext (loadAllSnapshots "posts/01-overview/*" "content") `mappend`
+    listField "aws-services" defaultContext (loadAllSnapshots "posts/02-aws-services/*" "content")
 
 pageContext :: Context String
-pageContext = emptySectionContext `mappend` defaultContext
-
-indexContext :: Context String
-indexContext = sectionContext `mappend` defaultContext
+pageContext = sectionContext `mappend` defaultContext
 
 stripHtml :: String -> String
 stripHtml = unwords . words . go False
@@ -94,7 +86,7 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            let indexCtx = indexContext
+            let indexCtx = pageContext
 
             getResourceBody
                 >>= applyAsTemplate indexCtx
